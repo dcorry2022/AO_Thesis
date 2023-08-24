@@ -1,0 +1,65 @@
+simName: atmospheretest
+pupilSize: 100
+nGS: 1
+nDM: 1
+nSci: 1
+nIters: 5000
+loopTime: 0.001
+threads: 4
+
+verbosity: 2
+
+saveCMat: False
+saveSlopes: True
+saveDmCommands:   False
+saveLgsPsf: True
+saveSciPsf: True
+
+
+Atmosphere:
+  scrnNo: 3
+  scrnHeights: [0, 4000, 10000]
+  scrnStrengths: [0.5, 0.35, 0.15]
+  windDirs: [0, 45, 180]
+  windSpeeds: [35, 26, 35]
+  wholeScrnSize: 2048
+  r0: 0.2
+  L0: [30, 30, 30]
+  infinite: True
+
+
+Telescope:
+  telDiam: 1.00
+  obsDiam: 0
+  mask: circle
+
+WFS:
+  0:
+    type: ShackHartmann
+    GSPosition: [0, 0]
+    GSHeight: 0
+    GSMag: 0
+    nxSubaps: 8
+    pxlsPerSubap: 10
+    subapFOV: 10
+    wavelength: 600e-9
+
+DM:
+  0:
+    type: FastPiezo
+    closed: True
+    nxActuators: 7
+    iMatValue: 500 
+
+Reconstructor:
+  type: MVM
+  svdConditioning: 0.03
+  gain: 0.6
+
+Science:
+  0:
+    position: [0, 0]
+    FOV: 2.5
+    wavelength: 600e-9
+    pxls: 64
+    instStrehlWithTT: True
